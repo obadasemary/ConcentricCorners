@@ -50,7 +50,15 @@ struct ContentView: View {
                 .fill(.indigo.gradient)
                 .padding(20)
                 .ignoresSafeArea()
-                .presentationDetents([.medium])
+                .presentationDetents(
+                    [
+                        .fraction(0.125),
+                        .fraction(0.25),
+                        .medium,
+                        .fraction(0.75),
+                        .large
+                    ]
+                )
         }
     }
 }
