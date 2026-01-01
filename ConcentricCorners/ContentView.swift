@@ -8,14 +8,50 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isPresented: Bool = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            VStack(alignment: .leading, spacing: 16) {
+//                ConcentricRectangle(corners: .concentric, isUniform: true)
+//                    .frame(width: 300, height: 300)
+                
+                Image(.cursor2025Models)
+                    .resizable()
+                    .frame(width: 300, height: 300)
+                    .clipShape(.rect(corners: .concentric, isUniform: true))
+                
+                VStack(alignment: .leading) {
+                    Text("Episode 1")
+                        .font(.title3.bold())
+                    
+                    Text("Episode Description")
+                        .foregroundStyle(.secondary)
+                        .fontWeight(.semibold)
+                }
+                
+                Button {
+                    isPresented = true
+                } label: {
+                    Text("Watch Now")
+                        .font(.title3.bold())
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(.indigo)
+                }
+            }
+            .padding(20)
         }
-        .padding()
+        .background(.secondary.opacity(0.20))
+        .containerShape(.rect(cornerRadius: 34, style: .continuous))
+        .sheet(isPresented: $isPresented) {
+            ConcentricRectangle()
+                .fill(.indigo.gradient)
+                .padding(20)
+                .ignoresSafeArea()
+                .presentationDetents([.medium])
+        }
     }
 }
 
