@@ -14,9 +14,6 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .leading, spacing: 16) {
-//                ConcentricRectangle(corners: .concentric, isUniform: true)
-//                    .frame(width: 300, height: 300)
-                
                 Image(.cursor2025Models)
                     .resizable()
                     .frame(width: 300, height: 300)
